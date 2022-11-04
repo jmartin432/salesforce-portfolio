@@ -1,0 +1,25 @@
+<template>
+    <lightning-card class="slds-border slds-size_1-of-1">
+        <div slot="title">
+            <h1 class="slds-text-align_center">
+                <lightning-icon icon-name="standard:link" size="small"></lightning-icon>
+                <span class="slds-var-m-left_small">Connect With Me</span>
+            </h1>
+        </div>
+        <div class="portfolio-footer-icons">
+            <template if:false={links.data}>
+                <lightning-spinner alternative-text="Loading"></lightning-spinner>
+            </template>
+            <template if:true={links.data}>
+                <template for:each={icons} for:item="icon">
+                    <a key={icon.name} href={icon.url} class="portfolio-footer-icon" target="_blank">
+                        <img src={icon.source} />
+                    </a>
+                </template>
+            </template>
+            <template if:true={links.error}>
+                {icons.error}
+            </template>
+        </div>
+    </lightning-card>
+</template>

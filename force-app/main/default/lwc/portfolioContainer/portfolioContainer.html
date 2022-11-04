@@ -1,0 +1,44 @@
+<template>
+    <lightning-layout multiple-rows horizontal-align="spread" class="portfolio-container">
+        <lightning-layout-item 
+        size="12"
+        small-device-size="12"
+        medium-device-size="12"
+        large-device-size="12"  
+        padding="around-small"
+        class="slds-var-m-around_medium"
+        >
+            <c-portfolio-header portfolio-id={portfolioId}></c-portfolio-header>
+        </lightning-layout-item>
+        <lightning-layout-item 
+        size="12" 
+        small-device-size="12"
+        medium-device-size="12"
+        large-device-size="12"  
+        padding="around-small"
+        class="slds-var-m-around_medium"
+        >
+            <c-portfolio-body portfolio-id={portfolioId} static-resource-path={staticResourcePath}></c-portfolio-body>
+        </lightning-layout-item>
+        <lightning-layout-item 
+        size="12"
+        small-device-size="12"
+        medium-device-size="5"
+        large-device-size="5"  
+        padding="around-small"
+        class="slds-var-m-around_medium"
+        >
+            <c-portfolio-footer-icons portfolio-id={portfolioId} static-resource-path={staticResourcePath}></c-portfolio-footer-icons>
+        </lightning-layout-item>  
+        <lightning-layout-item
+        size="12"
+        small-device-size="12"
+        medium-device-size="5"
+        large-device-size="5" 
+        padding="around-small"
+        class="slds-var-m-around_medium"
+        >
+            <c-portfolio-footer-about></c-portfolio-footer-about>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>
