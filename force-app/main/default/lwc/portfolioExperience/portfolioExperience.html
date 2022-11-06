@@ -1,0 +1,10 @@
+<template>
+    <template if:false={experience.data}>
+        <lightning-spinner alternative-text="Loading"></lightning-spinner>
+    </template>
+    <template if:true={experience.data}>
+        <div>{professional}</div>
+        <div>BREAK</div>
+        <div>{volunteer}</div>
+    </template>
+</template>

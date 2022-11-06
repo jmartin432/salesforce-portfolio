@@ -1,0 +1,10 @@
+<template>
+    <template if:false={education.data}>
+        <lightning-spinner alternative-text="Loading"></lightning-spinner>
+    </template>
+    <template if:true={education.data}>
+        <div>{degrees}</div>
+        <div>BREAK</div>
+        <div>{certificates}</div>
+    </template>
+</template>
