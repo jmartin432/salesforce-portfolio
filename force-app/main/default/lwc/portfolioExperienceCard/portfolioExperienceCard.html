@@ -8,6 +8,7 @@
             <template if:true={item.location}>
                 <p>{item.location}</p>
             </template>
+            <p>{item.dateRange}</p>
             <template if:true={item.bulletPoints}>
                 <ul class="slds-list_dotted">
                     <template for:each={item.bulletPoints} for:item="point" for:index="index">

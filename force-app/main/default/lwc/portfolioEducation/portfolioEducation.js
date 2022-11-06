@@ -9,6 +9,21 @@ const FIELDS = ['Education__c.Name', 'Education__c.Type__c', 'Education__c.Organ
 'Education__c.City__c', 'Education__c.State__c', 'Education__c.Bullet_Points__c',
 'Education__c.Image_Source__c', 'Education__c.Logo_Source__c']
 
+const MONTH_MAP = new Map([
+    ['01', 'January'],
+    ['02', 'February'],
+    ['03', 'March'],
+    ['04', 'April'],
+    ['05', 'May'],
+    ['06', 'June'],
+    ['07', 'July'],
+    ['08', 'August'],
+    ['09', 'September'],
+    ['10', 'October'],
+    ['11', 'November'],
+    ['12', 'December']
+])
+
 export default class PortfolioEducation extends LightningElement {
 
     @api portfolioId;
@@ -35,6 +50,10 @@ export default class PortfolioEducation extends LightningElement {
     })
     certificates
 
+    awardDate(date){
+        return `${MONTH_MAP.get(date.slice(5, 7))} ${date.slice(0, 4)}`
+    }
+
     formatEducation(item){
         console.log('yay', item)
         return {
@@ -44,16 +63,19 @@ export default class PortfolioEducation extends LightningElement {
                 ? `${item.fields.City__c.value}, ${item.fields.State__c.value}`
                 : undefined,
             award: item.fields.Award__c.value,
+            awardDate: this.awardDate(item.fields.Award_Date__c.value),
             bulletPoints: (item.fields.Bullet_Points__c.value) ? item.fields.Bullet_Points__c.value.split('.') : undefined
         }
     }
 
     get formattedDegrees(){
         return this.degrees.data.records.map(item => this.formatEducation(item))
+        .sort((a, b) => (a.awardDate > b.awardDate ? -1 : 1));
     }
 
     get formattedCertificates(){
         return this.certificates.data.records.map(item => this.formatEducation(item))
+        .sort((a, b) => (a.awardDate > b.awardDate ? -1 : 1));
     }
 
     connectedCallback(){}
