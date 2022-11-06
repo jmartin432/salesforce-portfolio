@@ -4,11 +4,10 @@ import { getFieldValue } from 'lightning/uiRecordApi';
 // import ORGANIZATION_FIELD from '@salesforce/schema/Education__c.Organization__c';
 // import TYPE_FIELD from '@salesforce/schema/Education__c.Type__c'
 
-const FIELDS = ['Education__c.Type__c', 'Education__c.Organization__c', 
+const FIELDS = ['Education__c.Name', 'Education__c.Type__c', 'Education__c.Organization__c', 
 'Education__c.Award__c', 'Education__c.Award_Date__c', 'Education__c.Award_Is_Expected__c', 
-'Education__c.City__c, Education__c.State__c', 'Education__c.Bullet_Points__c',
+'Education__c.City__c', 'Education__c.State__c', 'Education__c.Bullet_Points__c',
 'Education__c.Image_Source__c', 'Education__c.Logo_Source__c']
-//const FIELDS = [ORGANIZATION_FIELD]
 
 export default class PortfolioEducation extends LightningElement {
 
@@ -23,31 +22,61 @@ export default class PortfolioEducation extends LightningElement {
         relatedListId: 'Education__r',
         fields: FIELDS,
         sortBy: ['Award_Date__c'],
-        where: "{ Show__c: { eq: true }}"
+        where: "{and: [{ Show__c: { eq: true }}, {Type__c: {eq: 'Degree'}}]}"
     })
-    education
+    degrees
 
-    get degrees(){
-        let d = []
-        for (let i = 0; i < this.education.data.records.length; i++) {
-            let item = this.education.data.records[i]
-            if (item.fields.Type__c.value === 'Degree') {
-                d.push(item)
-            }
+    @wire(getRelatedListRecords, {
+        parentRecordId: '$portfolioId',
+        relatedListId: 'Education__r',
+        fields: FIELDS,
+        sortBy: ['Award_Date__c'],
+        where: "{and: [{ Show__c: { eq: true }}, {Type__c: {eq: 'Certificate'}}]}"
+    })
+    certificates
+
+    formatEducation(item){
+        console.log('yay', item)
+        return {
+            id: item.fields.Name.value,
+            organization: item.fields.Organization__c.value,
+            location: (item.fields.City__c.value && item.fields.State__c.value) 
+                ? `${item.fields.City__c.value}, ${item.fields.State__c.value}`
+                : undefined,
+            award: item.fields.Award__c.value,
+            bulletPoints: (item.fields.Bullet_Points__c.value) ? item.fields.Bullet_Points__c.value.split('.') : undefined
         }
-        return JSON.stringify(d)
     }
 
-    get certificates(){
-        let c = []
-        for (let i = 0; i < this.education.data.records.length; i++) {
-            let item = this.education.data.records[i]
-            if (item.fields.Type__c.value === 'Certificate') {
-                c.push(item)
-            }
-        }
-        return JSON.stringify(c)
+    get formattedDegrees(){
+        return this.degrees.data.records.map(item => this.formatEducation(item))
     }
+
+    get formattedCertificates(){
+        return this.certificates.data.records.map(item => this.formatEducation(item))
+    }
+
+    // get degrees(){
+    //     let d = []
+    //     for (let i = 0; i < this.education.data.records.length; i++) {
+    //         let item = this.education.data.records[i]
+    //         if (item.fields.Type__c.value === 'Degree') {
+    //             d.push(item)
+    //         }
+    //     }
+    //     return JSON.stringify(d)
+    // }
+
+    // get certificates(){
+    //     let c = []
+    //     for (let i = 0; i < this.education.data.records.length; i++) {
+    //         let item = this.education.data.records[i]
+    //         if (item.fields.Type__c.value === 'Certificate') {
+    //             c.push(item)
+    //         }
+    //     }
+    //     return JSON.stringify(c)
+    // }
 
     connectedCallback(){}
 

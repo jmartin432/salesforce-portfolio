@@ -1,10 +1,38 @@
 <template>
-    <template if:false={education.data}>
+    <!-- <template if:false={education.data}>
         <lightning-spinner alternative-text="Loading"></lightning-spinner>
-    </template>
-    <template if:true={education.data}>
-        <div>{degrees}</div>
-        <div>BREAK</div>
-        <div>{certificates}</div>
+    </template> -->
+    <template if:true={degrees.data}>
+        <lightning-layout multiple-rows horizontal-align="spread">
+            <lightning-layout-item
+            size="12"
+            small-device-size="12"
+            medium-device-size="5"
+            large-device-size="5"  
+            padding="around-small"
+            class="slds-var-m-around_medium">
+                <div>
+                    <h2>Degrees</h2>
+                </div>
+                <template for:each={formattedDegrees} for:item="degree">
+                    <c-portfolio-education-card key={degree.id} item={degree}></c-portfolio-education-card>
+                </template>
+            </lightning-layout-item>
+            <lightning-layout-item
+            size="12"
+            small-device-size="12"
+            medium-device-size="5"
+            large-device-size="5"  
+            padding="around-small"
+            class="slds-var-m-around_medium">
+                <div>
+                    <h2>Certificates</h2>
+                </div>
+                <template for:each={formattedCertificates} for:item="certificate">
+                    <c-portfolio-education-card key={certificate.id} item={certificate}></c-portfolio-education-card>
+                </template>
+            </lightning-layout-item>
+            </lightning-layout-item>
+        </lightning-layout>
     </template>
 </template>

@@ -4,7 +4,7 @@ import { getFieldValue } from 'lightning/uiRecordApi';
 // import ORGANIZATION_FIELD from '@salesforce/schema/Experience__c.Organization__c';
 // import TYPE_FIELD from '@salesforce/schema/Experience__c.Type__c'
 
-const FIELDS = ['Experience__c.Type__c', 'Experience__c.Organization__c', 'Experience__c.Role__c', 
+const FIELDS = ['Experience__c.Name', 'Experience__c.Type__c', 'Experience__c.Organization__c', 'Experience__c.Role__c', 
 'Experience__c.Start_Date__c', 'Experience__c.End_Date__c', 'Experience__c.Current__c',
 'Experience__c.City__c, Experience__c.State__c', 'Experience__c.Bullet_Points__c',
 'Experience__c.Logo_Source__c']
