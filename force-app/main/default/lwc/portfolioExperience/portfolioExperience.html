@@ -1,10 +1,44 @@
-<template>
-    <template if:false={experience.data}>
-        <lightning-spinner alternative-text="Loading"></lightning-spinner>
-    </template>
-    <template if:true={experience.data}>
-        <div>{professional}</div>
-        <div>BREAK</div>
-        <div>{volunteer}</div>
-    </template>
+<template>  
+    <lightning-layout multiple-rows horizontal-align="spread">
+        <lightning-layout-item
+        size="12"
+        small-device-size="12"
+        medium-device-size="6"
+        large-device-size="6"  
+        padding="around-small">
+            <div>
+                <h2>Professional</h2>
+            </div>
+            <template if:false={professional.data}>
+                <lightning-spinner alternative-text="Loading"></lightning-spinner>
+            </template>
+            <template if:true={professional.data}>
+                <template for:each={formattedProfessional} for:item="professional">
+                    <div key={professional.id} class="slds-m-vertical_small">
+                        <c-portfolio-experience-card item={professional}></c-portfolio-experience-card>
+                    </div>
+                </template>
+            </template>
+        </lightning-layout-item>
+        <lightning-layout-item
+        size="12"
+        small-device-size="12"
+        medium-device-size="6"
+        large-device-size="6"  
+        padding="around-small">
+            <div>
+                <h3>Volunteer</h3>
+            </div>
+            <template if:false={volunteer.data}>
+                <lightning-spinner alternative-text="Loading"></lightning-spinner>
+            </template>
+            <template if:true={volunteer.data}>
+                <template for:each={formattedVolunteer} for:item="volunteer">
+                    <div key={volunteer.id} class="slds-m-vertical_small">
+                    <c-portfolio-experience-card item={volunteer}></c-portfolio-experience-card>
+                    </div>
+                </template>
+            </template>
+        </lightning-layout-item>
+    </lightning-layout>
 </template>

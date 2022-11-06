@@ -56,28 +56,6 @@ export default class PortfolioEducation extends LightningElement {
         return this.certificates.data.records.map(item => this.formatEducation(item))
     }
 
-    // get degrees(){
-    //     let d = []
-    //     for (let i = 0; i < this.education.data.records.length; i++) {
-    //         let item = this.education.data.records[i]
-    //         if (item.fields.Type__c.value === 'Degree') {
-    //             d.push(item)
-    //         }
-    //     }
-    //     return JSON.stringify(d)
-    // }
-
-    // get certificates(){
-    //     let c = []
-    //     for (let i = 0; i < this.education.data.records.length; i++) {
-    //         let item = this.education.data.records[i]
-    //         if (item.fields.Type__c.value === 'Certificate') {
-    //             c.push(item)
-    //         }
-    //     }
-    //     return JSON.stringify(c)
-    // }
-
     connectedCallback(){}
 
     renderedCallback(){
