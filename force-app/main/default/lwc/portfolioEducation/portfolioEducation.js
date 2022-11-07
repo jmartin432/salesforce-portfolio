@@ -64,7 +64,7 @@ export default class PortfolioEducation extends LightningElement {
                 : undefined,
             award: item.fields.Award__c.value,
             awardDate: this.awardDate(item.fields.Award_Date__c.value),
-            bulletPoints: (item.fields.Bullet_Points__c.value) ? item.fields.Bullet_Points__c.value.split('.') : undefined
+            bulletPoints: (item.fields.Bullet_Points__c.value) ? item.fields.Bullet_Points__c.value.split(':') : undefined
         }
     }
 

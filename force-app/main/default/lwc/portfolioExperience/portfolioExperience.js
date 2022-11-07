@@ -48,8 +48,9 @@ export default class PortfolioExperience extends LightningElement {
     volunteer
 
     dateRange(start, end){
+        console.log('end: ', end)
         return `${MONTH_MAP.get(start.slice(5, 7))} ${start.slice(0, 4)} - 
-        ${(end) ? MONTH_MAP[end.slice(5, 7)] : 'Present'}`
+        ${(end) ? `${MONTH_MAP.get(end.slice(5, 7))} ${end.slice(0, 4)}`: `Present`}`
     }
 
     formatExperience(item){
@@ -64,7 +65,7 @@ export default class PortfolioExperience extends LightningElement {
             startDate: item.fields.Start_Date__c.value,
             endDate: (item.fields.End_Date__c.value) ? item.fields.End_Date__c.value : new Date().toISOString().slice(0, 10),
             dateRange: this.dateRange(item.fields.Start_Date__c.value, item.fields.End_Date__c.value),
-            bulletPoints: (item.fields.Bullet_Points__c.value) ? item.fields.Bullet_Points__c.value.split('.') : undefined
+            bulletPoints: (item.fields.Bullet_Points__c.value) ? item.fields.Bullet_Points__c.value.split(':') : undefined
         }
         console.log(test.dateRange)
         return test
