@@ -1,13 +1,13 @@
 <template>
     <lightning-tabset variant="scoped">
-        <lightning-tab label="About Me">
-            <c-portfolio-about portfolio-id={portfolioId} static-resource-path={staticResourcePath}></c-portfolio-about>
-        </lightning-tab>
         <lightning-tab label="Experience">
             <c-portfolio-experience portfolio-id={portfolioId}></c-portfolio-experience>
         </lightning-tab>
         <lightning-tab label="Education">
             <c-portfolio-education portfolio-id={portfolioId}></c-portfolio-education>
+        </lightning-tab>
+        <lightning-tab label="About Me">
+            <c-portfolio-about portfolio-id={portfolioId}></c-portfolio-about>
         </lightning-tab>
         <lightning-tab label="Contact Me">
             <c-portfolio-contact-form></c-portfolio-contact-form>

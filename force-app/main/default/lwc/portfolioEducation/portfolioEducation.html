@@ -6,19 +6,21 @@
         medium-device-size="6"
         large-device-size="6"  
         padding="around-small">
-            <div>
-                <h2>Degrees</h2>
-            </div>
-            <template if:false={degrees.data}>
-                <lightning-spinner alternative-text="Loading"></lightning-spinner>
-            </template>
-            <template if:true={degrees.data}>
-                <template for:each={formattedDegrees} for:item="degree">
-                    <div key={degree.id} class="slds-m-vertical_small">
-                        <c-portfolio-education-card item={degree}></c-portfolio-education-card>
-                    </div>
+            <div class="slds-is-relative">
+                <div>
+                    <h3 class="body-header slds-text-heading_large">Degrees</h3>
+                </div>
+                <template if:false={degrees.data}>
+                    <lightning-spinner alternative-text="Loading"></lightning-spinner>
                 </template>
-            </template>
+                <template if:true={degrees.data}>
+                    <template for:each={formattedDegrees} for:item="degree">
+                        <div key={degree.id} class="slds-m-vertical_small">
+                            <c-portfolio-education-card item={degree}></c-portfolio-education-card>
+                        </div>
+                    </template>
+                </template>
+            </div>
         </lightning-layout-item>
         <lightning-layout-item
         size="12"
@@ -26,19 +28,21 @@
         medium-device-size="6"
         large-device-size="6"  
         padding="around-small">
-            <div>
-                <h2>Certificates</h2>
-            </div>
-            <template if:false={certificates.data}>
-                <lightning-spinner alternative-text="Loading"></lightning-spinner>
-            </template>
-            <template if:true={certificates.data}>
-                <template for:each={formattedCertificates} for:item="certificate">
-                    <div key={certificate.id} class="slds-m-vertical_small">
-                        <c-portfolio-education-card item={certificate}></c-portfolio-education-card>
-                    </div>
+            <div class="slds-is-relative">
+                <div>
+                    <h3 class="body-header slds-text-heading_large">Certificates</h3>
+                </div>
+                <template if:false={certificates.data}>
+                    <lightning-spinner alternative-text="Loading"></lightning-spinner>
                 </template>
-            </template>
+                <template if:true={certificates.data}>
+                    <template for:each={formattedCertificates} for:item="certificate">
+                        <div key={certificate.id} class="slds-m-vertical_small">
+                            <c-portfolio-education-card item={certificate}></c-portfolio-education-card>
+                        </div>
+                    </template>
+                </template>
+            </div>
         </lightning-layout-item>
     </lightning-layout>
 </template>

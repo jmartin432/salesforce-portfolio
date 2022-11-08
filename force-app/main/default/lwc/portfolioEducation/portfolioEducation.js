@@ -55,7 +55,6 @@ export default class PortfolioEducation extends LightningElement {
     }
 
     formatEducation(item){
-        console.log('yay', item)
         return {
             id: item.fields.Name.value,
             organization: item.fields.Organization__c.value,
@@ -64,7 +63,9 @@ export default class PortfolioEducation extends LightningElement {
                 : undefined,
             award: item.fields.Award__c.value,
             awardDate: this.awardDate(item.fields.Award_Date__c.value),
-            bulletPoints: (item.fields.Bullet_Points__c.value) ? item.fields.Bullet_Points__c.value.split(':') : undefined
+            bulletPoints: (item.fields.Bullet_Points__c.value) ? item.fields.Bullet_Points__c.value.split(':') : undefined,
+            showDoc: (item.fields.Type__c.value === 'Certificate' && item.fields.Image_Source__c.value),
+            imageSource: item.fields.Image_Source__c.value
         }
     }
 
@@ -81,7 +82,10 @@ export default class PortfolioEducation extends LightningElement {
     connectedCallback(){}
 
     renderedCallback(){
-        console.log('degrees: ', this.degrees)
-        console.log('certificates: ', this.certificates)
+        if (this.certificates.data){
+            console.log('here: ', this.formattedCertificates[0].showDoc)
+        }
+        // console.log('degrees: ', this.degrees)
+        // console.log('certificates: ', this.certificates)
     }
 }

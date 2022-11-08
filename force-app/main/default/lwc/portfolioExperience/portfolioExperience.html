@@ -6,19 +6,21 @@
         medium-device-size="6"
         large-device-size="6"  
         padding="around-small">
-            <div>
-                <h2>Professional</h2>
-            </div>
-            <template if:false={professional.data}>
-                <lightning-spinner alternative-text="Loading"></lightning-spinner>
-            </template>
-            <template if:true={professional.data}>
-                <template for:each={formattedProfessional} for:item="professional">
-                    <div key={professional.id} class="slds-m-vertical_small">
-                        <c-portfolio-experience-card item={professional}></c-portfolio-experience-card>
-                    </div>
+            <div class="slds-is-relative">
+                <div>
+                    <h3 class="body-header slds-text-heading_large">Professional</h3>
+                </div>
+                <template if:false={professional.data}>
+                    <lightning-spinner alternative-text="Loading"></lightning-spinner>
                 </template>
-            </template>
+                <template if:true={professional.data}>
+                    <template for:each={formattedProfessional} for:item="professional">
+                        <div key={professional.id} class="slds-m-vertical_small">
+                            <c-portfolio-experience-card item={professional}></c-portfolio-experience-card>
+                        </div>
+                    </template>
+                </template>
+            </div>
         </lightning-layout-item>
         <lightning-layout-item
         size="12"
@@ -26,19 +28,21 @@
         medium-device-size="6"
         large-device-size="6"  
         padding="around-small">
-            <div>
-                <h3>Volunteer</h3>
-            </div>
-            <template if:false={volunteer.data}>
-                <lightning-spinner alternative-text="Loading"></lightning-spinner>
-            </template>
-            <template if:true={volunteer.data}>
-                <template for:each={formattedVolunteer} for:item="volunteer">
-                    <div key={volunteer.id} class="slds-m-vertical_small">
-                    <c-portfolio-experience-card item={volunteer}></c-portfolio-experience-card>
-                    </div>
+            <div class="slds-is-relative">
+                <div>
+                    <h3 class="body-header slds-text-heading_large">Volunteer</h3>
+                </div>
+                <template if:false={volunteer.data}>
+                    <lightning-spinner alternative-text="Loading"></lightning-spinner>
                 </template>
-            </template>
+                <template if:true={volunteer.data}>
+                    <template for:each={formattedVolunteer} for:item="volunteer">
+                        <div key={volunteer.id} class="slds-m-vertical_small">
+                        <c-portfolio-experience-card item={volunteer}></c-portfolio-experience-card>
+                        </div>
+                    </template>
+                </template>
+            </div>
         </lightning-layout-item>
     </lightning-layout>
 </template>

@@ -6,8 +6,18 @@
                 <span class="slds-var-m-left_small">About Me</span>
             </h1>
         </div>
-        <div class="text-area slds-text-align_left slds-var-m-horizontal_small">
-            <p>{text}</p>
+        <div class="slds-grid slds-wrap slds-gutters slds-p-around_medium">
+            <div class="slds-col slds-is-relative
+            slds-size--1-of-1 slds-small-size--1-of-1 slds-medium-size--1-of-4 slds-large-size--1-of-4">
+                <template if:true={imageLoading}>
+                    <lightning-spinner alternative-text="Loading Headshot Image"></lightning-spinner>
+                </template>
+                <img src={headshotSource} alt="Headshot Image" onload={imageLoaded} class="headshot-image slds-hidden slds-show_medium"/>
+            </div>
+            <div class="text-area slds-col
+            slds-size--1-of-1 slds-small-size--1-of-1 slds-medium-size--3-of-4 slds-large-size--3-of-4">
+                <p>{text}</p>
+            </div>
         </div>
     </lightning-card>
 </template>

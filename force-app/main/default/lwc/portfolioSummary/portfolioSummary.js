@@ -5,7 +5,7 @@ import SUMMARY_FIELD from '@salesforce/schema/Portfolio__c.Summary__c';
 
 const FIELDS = [NAME_FIELD, SUMMARY_FIELD];
 
-export default class PortfolioHeader extends LightningElement {
+export default class PortfolioSummary extends LightningElement {
     @api portfolioId;
 
     @wire(getRecord, { recordId: '$portfolioId', fields: FIELDS })

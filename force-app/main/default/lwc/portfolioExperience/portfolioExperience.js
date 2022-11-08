@@ -84,7 +84,7 @@ export default class PortfolioExperience extends LightningElement {
     connectedCallback(){}
 
     renderedCallback(){
-        console.log('professional: ', this.professional)
-        console.log('volunteer: ', this.volunteer)
+        // console.log('professional: ', this.professional)
+        // console.log('volunteer: ', this.volunteer)
     }
 }
