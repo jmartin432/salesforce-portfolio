@@ -7,7 +7,6 @@ const FIELDS = [ABOUT_FIELD, HEADSHOT_SOURCE_FIELD];
 
 export default class PortfolioAbout extends LightningElement {
     @api portfolioId
-    @api staticResourcePath
 
     imageLoading = true
 
