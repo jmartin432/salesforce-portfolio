@@ -1,33 +1,6 @@
 <template>
-    <c-custom-toast-event auto-close-time="5000"></c-custom-toast-event>
-    <lightning-card title="Contact Me" icon-name="standard:email">
-        <div class="slds-var-m-around_medium">
-            <lightning-input
-                label="Full Name"
-                value={fullName}
-                onchange={handleFieldChange}
-                class="slds-var-m-bottom_x-small"
-                required
-            ></lightning-input>
-            <lightning-input
-                label="Email"
-                value={email}
-                onchange={handleFieldChange}
-                class="slds-var-m-bottom_x-small"
-                required
-            ></lightning-input>
-            <lightning-textarea
-                label="Message"
-                value={message}
-                onchange={handleFieldChange}
-                class="slds-var-m-bottom_x-small"
-                required
-            ></lightning-textarea>
-            <lightning-button
-                label="Submit"
-                variant="brand-outline"
-                onclick={submitForm}
-            ></lightning-button>
-        </div>
-    </lightning-card>
+    <lightning-flow
+        flow-api-name="Contact_Form_Flow"
+    >
+    </lightning-flow>
 </template>
