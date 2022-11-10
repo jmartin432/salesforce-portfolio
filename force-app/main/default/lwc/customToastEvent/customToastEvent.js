@@ -1,6 +1,9 @@
 import { LightningElement, api ,track } from 'lwc';
 
 export default class CustomToastEvent extends LightningElement {
+
+    // https://cafeforce.com/custom-toast-notification-lwc-salesforce/
+    
     @track type;
     @track message;
     @track showToastBar = false;
