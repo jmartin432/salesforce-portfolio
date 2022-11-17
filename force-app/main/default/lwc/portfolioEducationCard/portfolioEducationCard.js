@@ -11,8 +11,6 @@ export default class PortfolioEducationCard extends LightningElement {
     }
 
     showModal(){
-        console.log('button clicked')
-        console.log(this.item.imageSource)
         this.openModal = true;
     }
 }

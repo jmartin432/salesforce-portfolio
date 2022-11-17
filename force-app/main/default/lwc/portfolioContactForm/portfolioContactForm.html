@@ -1,6 +1,19 @@
 <template>
-    <lightning-flow
+    <lightning-card>
+        <div slot="title">
+            <h1 class="slds-text-align_center">
+                <lightning-icon icon-name="standard:email" size="small"></lightning-icon>
+                <span class="slds-var-m-left_small">Contact Me</span>
+            </h1>
+        </div>
+        <div class="body slds-var-p-horizontal_small">
+            <p>This is a Salesforce Screen Flow embedded in a Lightning Web Component. 
+            I recommend using Chrome as the input fields may not render in other browsers 
+            (If you know why, please let me know 😊)</p>
+        </div>
+            <lightning-flow
         flow-api-name="Contact_Form_Flow"
-    >
-    </lightning-flow>
+        >
+        </lightning-flow>
+    </lightning-card>
 </template>

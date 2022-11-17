@@ -1,0 +1,23 @@
+<template>
+    <div class="slds-modal slds-fade-in-open slds-backdrop">  
+        <div class="slds-modal__container">  
+            <!--  HEADER Section   -->
+            <div class="slds-modal__header"> 
+                <h1>{award}</h1> 
+            </div>  
+        <!--  Body Section  -->  
+        <div class="slds-modal__content slds-p-around_medium">  
+            <img src={imageSource} />
+        </div>  
+        <!--  Footer Section -->  
+        <div class="slds-modal__footer">  
+            <lightning-button 
+            icon-name="utility:close" 
+            label="Close" 
+            variant="neutral" 
+            onclick={closeModal}>  
+            </lightning-button>  
+        </div>  
+      </div>  
+    </div>  
+</template>
