@@ -5,19 +5,24 @@
             <div class="slds-modal__header"> 
                 <h1>{award}</h1> 
             </div>  
-        <!--  Body Section  -->  
-        <div class="slds-modal__content slds-p-around_medium">  
-            <img src={imageSource} />
-        </div>  
-        <!--  Footer Section -->  
-        <div class="slds-modal__footer">  
-            <lightning-button 
-            icon-name="utility:close" 
-            label="Close" 
-            variant="neutral" 
-            onclick={closeModal}>  
-            </lightning-button>  
-        </div>  
-      </div>  
+            <!--  Body Section  -->  
+            <div class="slds-is-relative">
+                <template if:true={imageLoading}>
+                    <lightning-spinner alternative-text="Loading Certificate Image"></lightning-spinner>
+                </template> 
+                <div>
+                    <img src={imageSource} onload={imageLoaded}/>
+                </div>
+            </div>
+                <!--  Footer Section -->  
+            <div class="slds-modal__footer">  
+                <lightning-button 
+                icon-name="utility:close" 
+                label="Close" 
+                variant="neutral" 
+                onclick={closeModal}>  
+                </lightning-button>  
+            </div>  
+        </div>
     </div>  
 </template>
