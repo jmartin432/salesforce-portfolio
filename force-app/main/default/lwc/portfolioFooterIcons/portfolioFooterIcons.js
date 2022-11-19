@@ -29,9 +29,7 @@ export default class PortfolioFooterIcons extends LightningElement {
 
     connectedCallback(){}
 
-    renderedCallback(){
-        console.log("footer icons: ", this.links.data)
-    }
+    renderedCallback(){}
 
     get icons() {
         const iconList = [
@@ -60,7 +58,6 @@ export default class PortfolioFooterIcons extends LightningElement {
                 source: getFieldValue(this.links.data, TRAILHEAD_LOGO_SOURCE_FIELD),
             }
         ]
-        console.log(iconList)
         return iconList.filter((icon) => icon.show);
     }
 }

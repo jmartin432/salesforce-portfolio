@@ -42,20 +42,17 @@ export default class PortfolioExperience extends LightningElement {
         parentRecordId: '$portfolioId',
         relatedListId: 'Experience__r',
         fields: FIELDS,
-        //sortBy: ['End_Date__c'],
         where: "{and: [{ Show__c: { eq: true }}, {Type__c: {eq: 'Volunteer'}}]}"
     })
     volunteer
 
     dateRange(start, end){
-        console.log('end: ', end)
         return `${MONTH_MAP.get(start.slice(5, 7))} ${start.slice(0, 4)} - 
         ${(end) ? `${MONTH_MAP.get(end.slice(5, 7))} ${end.slice(0, 4)}`: `Present`}`
     }
 
     formatExperience(item){
-        let today = new Date().toISOString().slice(0, 10)
-        let test = {
+        return {
             id: item.fields.Name.value,
             role: item.fields.Role__c.value,
             organization: item.fields.Organization__c.value,
@@ -67,8 +64,6 @@ export default class PortfolioExperience extends LightningElement {
             dateRange: this.dateRange(item.fields.Start_Date__c.value, item.fields.End_Date__c.value),
             bulletPoints: (item.fields.Bullet_Points__c.value) ? item.fields.Bullet_Points__c.value.split(':') : undefined
         }
-        console.log(test.dateRange)
-        return test
     }
 
     get formattedProfessional(){
@@ -83,8 +78,5 @@ export default class PortfolioExperience extends LightningElement {
 
     connectedCallback(){}
 
-    renderedCallback(){
-        // console.log('professional: ', this.professional)
-        // console.log('volunteer: ', this.volunteer)
-    }
+    renderedCallback(){}
 }

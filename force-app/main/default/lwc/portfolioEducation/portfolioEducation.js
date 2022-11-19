@@ -50,7 +50,7 @@ export default class PortfolioEducation extends LightningElement {
     })
     certificates
 
-    awardDate(date){
+    awardDatePrint(date){
         return `${MONTH_MAP.get(date.slice(5, 7))} ${date.slice(0, 4)}`
     }
 
@@ -62,7 +62,8 @@ export default class PortfolioEducation extends LightningElement {
                 ? `${item.fields.City__c.value}, ${item.fields.State__c.value}`
                 : undefined,
             award: item.fields.Award__c.value,
-            awardDate: this.awardDate(item.fields.Award_Date__c.value),
+            awardDate: item.fields.Award_Date__c.value,
+            awardDatePrint: this.awardDatePrint(item.fields.Award_Date__c.value),
             bulletPoints: (item.fields.Bullet_Points__c.value) ? item.fields.Bullet_Points__c.value.split(':') : undefined,
             showDoc: (item.fields.Type__c.value === 'Certificate' && item.fields.Image_Source__c.value),
             imageSource: item.fields.Image_Source__c.value
@@ -81,11 +82,5 @@ export default class PortfolioEducation extends LightningElement {
 
     connectedCallback(){}
 
-    renderedCallback(){
-        if (this.certificates.data){
-            console.log('here: ', this.formattedCertificates[0].showDoc)
-        }
-        // console.log('degrees: ', this.degrees)
-        // console.log('certificates: ', this.certificates)
-    }
+    renderedCallback(){}
 }

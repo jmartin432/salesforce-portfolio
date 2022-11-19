@@ -6,10 +6,17 @@
     opacity: .3;
 }
 
-.portfolio-header .badge{
+.portfolio-header .platform-app-builder-badge{
     position: absolute;
     top: 3px;
     left: 3px;
+    width: 10%;
+}
+
+.portfolio-header .javascript-developer-1-badge{
+    position: absolute;
+    top: 3px;
+    left: 12%;
     width: 10%;
 }
 
