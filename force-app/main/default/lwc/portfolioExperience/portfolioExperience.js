@@ -34,26 +34,19 @@ export default class PortfolioExperience extends LightningElement {
         parentRecordId: '$portfolioId',
         relatedListId: 'Experience__r',
         fields: FIELDS,
-        where: "{and: [{ Show__c: { eq: true }}, {Type__c: {eq: 'Professional'}}]}"
+        where: "{ Show__c: { eq: true }}"
     })
-    professional
-
-    @wire(getRelatedListRecords, {
-        parentRecordId: '$portfolioId',
-        relatedListId: 'Experience__r',
-        fields: FIELDS,
-        where: "{and: [{ Show__c: { eq: true }}, {Type__c: {eq: 'Volunteer'}}]}"
-    })
-    volunteer
+    records
 
     dateRange(start, end){
         return `${MONTH_MAP.get(start.slice(5, 7))} ${start.slice(0, 4)} - 
         ${(end) ? `${MONTH_MAP.get(end.slice(5, 7))} ${end.slice(0, 4)}`: `Present`}`
     }
 
-    formatExperience(item){
+    formatRecord(item){
         return {
             id: item.fields.Name.value,
+            type: item.fields.Type__c.value,
             role: item.fields.Role__c.value,
             organization: item.fields.Organization__c.value,
             location: (item.fields.City__c.value && item.fields.State__c.value) 
@@ -66,14 +59,17 @@ export default class PortfolioExperience extends LightningElement {
         }
     }
 
+    filterRecords(type) {
+        return this.records.data.records.filter(item => item.fields.Type__c.value === type).map(item => this.formatRecord(item))
+        .sort((a, b) => (a.awardDate > b.awardDate ? -1 : 1));
+    }
+
     get formattedProfessional(){
-        return this.professional.data.records.map(item => this.formatExperience(item))
-        .sort((a, b) => (a.endDate > b.endDate ? -1 : 1));
+        return this.filterRecords('Professional')
     }
 
     get formattedVolunteer(){
-        return this.volunteer.data.records.map(item => this.formatExperience(item))
-        .sort((a, b) => (a.endDate > b.endDate ? -1 : 1));
+        return this.filterRecords('Volunteer')
     }
 
     connectedCallback(){}

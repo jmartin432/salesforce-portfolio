@@ -63,7 +63,6 @@ export default class PortfolioEducation extends LightningElement {
     }
 
     filterRecords(type) {
-        console.log(type)
         return this.records.data.records.filter(item => item.fields.Type__c.value === type).map(item => this.formatRecord(item))
         .sort((a, b) => (a.awardDate > b.awardDate ? -1 : 1));
     }

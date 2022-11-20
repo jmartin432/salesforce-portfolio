@@ -13,7 +13,7 @@
             <template if:true={links.data}>
                 <template for:each={icons} for:item="icon">
                     <a key={icon.name} href={icon.url} class="portfolio-footer-icon" target="_blank">
-                        <img src={icon.source} />
+                        <img src={icon.iconSource} alt={icon.name}/>
                     </a>
                 </template>
             </template>
