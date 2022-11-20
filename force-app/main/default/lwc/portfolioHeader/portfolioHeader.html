@@ -1,11 +1,11 @@
 <template>
     <div class="portfolio-header">
-        <img class="background-image" src="/sfsites/c/resource/portfolioStaticResources/portfolioStaticResources/PortfolioHeader-800.png" alt="Header Image" />
-        <img class="badge platform-app-builder-badge" src="/sfsites/c/resource/portfolioStaticResources/portfolioStaticResources/PlatformAppBuilder-200.png" />
-        <img class="badge javascript-developer-1-badge" src="/sfsites/c/resource/portfolioStaticResources/portfolioStaticResources/JavaScriptDeveloper1-200.png" />
+        <img class="background-image" src={headerImage} alt="Header Image" />
+        <img class="badge platform-app-builder-badge" src={platformAppBuilderBadge} alt="Platform App Builder Badge"/>
+        <img class="badge javascript-developer-1-badge" src={javascriptDeveloperBadge} alt="JavaScript Developer I Badge"/>
         <div class="text-container">
-            <h1>Justin L. Martin</h1>
-            <h2>Salesforce Portfolio</h2>
+            <h1>{name}</h1>
+            <h2>{title}</h2>
         </div>
     </div>
 </template>

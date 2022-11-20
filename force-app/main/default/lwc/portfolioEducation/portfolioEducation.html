@@ -10,10 +10,10 @@
                 <div>
                     <h3 class="body-header slds-text-heading_large">Degrees</h3>
                 </div>
-                <template if:false={degrees.data}>
+                <template if:false={records.data}>
                     <lightning-spinner alternative-text="Loading"></lightning-spinner>
                 </template>
-                <template if:true={degrees.data}>
+                <template if:true={records.data}>
                     <template for:each={formattedDegrees} for:item="degree">
                         <div key={degree.id} class="slds-m-vertical_small">
                             <c-portfolio-education-card item={degree}></c-portfolio-education-card>
@@ -32,10 +32,10 @@
                 <div>
                     <h3 class="body-header slds-text-heading_large">Certificates</h3>
                 </div>
-                <template if:false={certificates.data}>
+                <template if:false={records.data}>
                     <lightning-spinner alternative-text="Loading"></lightning-spinner>
                 </template>
-                <template if:true={certificates.data}>
+                <template if:true={records.data}>
                     <template for:each={formattedCertificates} for:item="certificate">
                         <div key={certificate.id} class="slds-m-vertical_small">
                             <c-portfolio-education-card item={certificate}></c-portfolio-education-card>

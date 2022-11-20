@@ -1,27 +1,33 @@
-import { LightningElement, api, wire } from 'lwc';
-import { getRecord, getFieldValue } from 'lightning/uiRecordApi';
-import NAME_FIELD from '@salesforce/schema/Portfolio__c.Name';
-import SUMMARY_FIELD from '@salesforce/schema/Portfolio__c.Summary__c';
+import { LightningElement} from 'lwc';
+import staticResources from '@salesforce/resourceUrl/PortfolioStaticResources'
 
-const FIELDS = [NAME_FIELD, SUMMARY_FIELD];
+const NAME = 'Justin L. Martin'
+const TITLE = 'Salesforce Portfolio'
+const STATIC_RESOURCE_PATH = `${staticResources}/PortfolioStaticResources/`
 
 export default class PortfolioHeader extends LightningElement {
-    @api portfolioId;
-
-    @wire(getRecord, { recordId: '$portfolioId', fields: FIELDS })
-    header
 
     connectedCallback(){}
 
-    renderedCallback(){
-        //console.log("header: ", this.header.data)
-    }
+    renderedCallback(){}
 
     get name() {
-        return getFieldValue(this.header.data, NAME_FIELD);
+        return NAME;
     }
 
-    get summary() {
-        return getFieldValue(this.header.data, SUMMARY_FIELD);
+    get title() {
+        return TITLE;
+    }
+
+    get headerImage() {
+        return `${STATIC_RESOURCE_PATH}PortfolioHeader-800.png`
+    }
+
+    get platformAppBuilderBadge() {
+        return `${STATIC_RESOURCE_PATH}PlatformAppBuilder-200.png`
+    }
+
+    get javascriptDeveloperBadge() {
+        return `${STATIC_RESOURCE_PATH}JavaScriptDeveloper1-200.png`
     }
 }
