@@ -1,3 +1,19 @@
-/* lightning-tabset {
-    width: 800px;
-} */
+@media screen and (max-width: 768px) {
+    .body-tabset {
+        display: none;
+    }
+
+    .body-accordion {
+        display: block;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .body-tabset {
+        display: block;
+    }
+
+    .body-accordion {
+        display: none;
+    }
+}

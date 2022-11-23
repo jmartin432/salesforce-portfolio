@@ -1,16 +1,37 @@
 <template>
-    <lightning-tabset variant="scoped">
-        <lightning-tab label="Experience">
-            <c-portfolio-experience portfolio-id={portfolioId}></c-portfolio-experience>
-        </lightning-tab>
-        <lightning-tab label="Education">
-            <c-portfolio-education portfolio-id={portfolioId}></c-portfolio-education>
-        </lightning-tab>
-        <lightning-tab label="About Me">
-            <c-portfolio-about portfolio-id={portfolioId}></c-portfolio-about>
-        </lightning-tab>
-        <lightning-tab label="Contact Me">
-            <c-portfolio-contact-form></c-portfolio-contact-form>
-        </lightning-tab>
-    </lightning-tabset>
+    <div class="body-tabset">
+        <lightning-tabset variant="scoped">
+            <lightning-tab label="Experience">
+                <c-portfolio-experience portfolio-id={portfolioId}></c-portfolio-experience>
+            </lightning-tab>
+            <lightning-tab label="Education">
+                <c-portfolio-education portfolio-id={portfolioId}></c-portfolio-education>
+            </lightning-tab>
+            <lightning-tab label="About Me">
+                <c-portfolio-about portfolio-id={portfolioId}></c-portfolio-about>
+            </lightning-tab>
+            <lightning-tab label="Contact Me">
+                <c-portfolio-contact-form></c-portfolio-contact-form>
+            </lightning-tab>
+        </lightning-tabset>
+    </div>
+    <div class="body-accordion">
+        <lightning-accordion 
+        allow-multiple-sections-open
+        onsectiontoggle={handleSectionToggle}
+        active-section-name={activeSections}>
+            <lightning-accordion-section name="Experience" label="Experience">
+                <c-portfolio-experience portfolio-id={portfolioId}></c-portfolio-experience>
+            </lightning-accordion-section>
+            <lightning-accordion-section name="Education" label="Education">
+                <c-portfolio-education portfolio-id={portfolioId}></c-portfolio-education>
+            </lightning-accordion-section>
+            <lightning-accordion-section name="About Me" label="About Me">
+                <c-portfolio-about portfolio-id={portfolioId}></c-portfolio-about>
+            </lightning-accordion-section>
+            <lightning-accordion-section name="Contact Me" label="Contact Me">
+                <c-portfolio-contact-form></c-portfolio-contact-form>
+            </lightning-accordion-section>
+        </lightning-accordion>
+    </div>
 </template>
