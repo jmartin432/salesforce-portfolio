@@ -5,6 +5,8 @@ export default class PortfolioEducationCard extends LightningElement {
     @api item
 
     openModal = false;
+
+    connectedCallback() {}
     
     closeModal() {
         this.openModal = false;

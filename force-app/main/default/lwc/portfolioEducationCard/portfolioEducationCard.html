@@ -1,23 +1,21 @@
 <template>
     <lightning-card>
-        <h3 slot="title">
+        <!-- Header -->
+        <h3 slot="title" class="wrap-text">
             {item.award}
         </h3>
         <template if:true={item.showDoc}>
             <lightning-button 
+            class="header-button slds-show_small"
             slot="actions"
             variant="neutral" 
             label="View" 
             title="View" 
             onclick={showModal}>
             </lightning-button>
-            <template if:true={openModal}>  
-                <c-portfolio-modal 
-                image-source={item.imageSource}
-                award={item.award}
-                onclosemodal={closeModal}></c-portfolio-modal>
-            </template>  
-        </template>
+        </template>    
+
+        <!-- Body -->
         <div class="slds-var-m-horizontal_small">
             <p>{item.organization}</p>
             <template if:true={item.location}>
@@ -31,6 +29,23 @@
                     </template>
                 </ul>
             </template>
+            <template if:true={item.showDoc}>
+                <div class="slds-m-top_medium slds-hide_small">
+                    <lightning-button 
+                    class="footer-button"
+                    variant="neutral" 
+                    label="View" 
+                    title="View" 
+                    onclick={showModal}>
+                    </lightning-button>
+                </div>
+            </template>
         </div>
     </lightning-card>
+    <template if:true={openModal}>  
+        <c-portfolio-modal 
+        image-source={item.imageSource}
+        award={item.award}
+        onclosemodal={closeModal}></c-portfolio-modal>
+    </template>  
 </template>
