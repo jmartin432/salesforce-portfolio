@@ -2,9 +2,9 @@ import { LightningElement, api, wire } from 'lwc';
 import { getRelatedListRecords } from 'lightning/uiRelatedListApi';
 import { getFieldValue } from 'lightning/uiRecordApi';
 
-const FIELDS = ['Experience__c.Name', 'Experience__c.Type__c', 'Experience__c.Organization__c', 'Experience__c.Role__c', 
+const FIELDS = ['Experience__c.Id', 'Experience__c.Name', 'Experience__c.Type__c', 'Experience__c.Organization__c', 'Experience__c.Role__c', 
 'Experience__c.Start_Date__c', 'Experience__c.End_Date__c', 'Experience__c.Current__c',
-'Experience__c.City__c', 'Experience__c.State__c', 'Experience__c.Bullet_Points__c',
+'Experience__c.City__c', 'Experience__c.State__c',
 'Experience__c.Logo_Source__c']
 
 const MONTH_MAP = new Map([
@@ -39,13 +39,15 @@ export default class PortfolioExperience extends LightningElement {
     records
 
     dateRange(start, end){
+        console.log(start, end)
         return `${MONTH_MAP.get(start.slice(5, 7))} ${start.slice(0, 4)} - 
         ${(end) ? `${MONTH_MAP.get(end.slice(5, 7))} ${end.slice(0, 4)}`: `Present`}`
     }
 
     formatRecord(item){
         return {
-            id: item.fields.Name.value,
+            id: item.fields.Id.value,
+            name: item.fields.Name.value,
             type: item.fields.Type__c.value,
             role: item.fields.Role__c.value,
             organization: item.fields.Organization__c.value,
@@ -54,14 +56,13 @@ export default class PortfolioExperience extends LightningElement {
                 : undefined,
             startDate: item.fields.Start_Date__c.value,
             endDate: (item.fields.End_Date__c.value) ? item.fields.End_Date__c.value : new Date().toISOString().slice(0, 10),
-            dateRange: this.dateRange(item.fields.Start_Date__c.value, item.fields.End_Date__c.value),
-            bulletPoints: (item.fields.Bullet_Points__c.value) ? item.fields.Bullet_Points__c.value.split(':') : undefined
+            dateRange: this.dateRange(item.fields.Start_Date__c.value, item.fields.End_Date__c.value)
         }
     }
 
     filterRecords(type) {
         return this.records.data.records.filter(item => item.fields.Type__c.value === type).map(item => this.formatRecord(item))
-        .sort((a, b) => (a.awardDate > b.awardDate ? -1 : 1));
+        .sort((a, b) => (a.endDate > b.endDate ? -1 : 1));
     }
 
     get formattedProfessional(){
@@ -72,7 +73,8 @@ export default class PortfolioExperience extends LightningElement {
         return this.filterRecords('Volunteer')
     }
 
-    connectedCallback(){}
+    connectedCallback(){
+    }
 
     renderedCallback(){}
 }

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>customToastEvent</members>
+        <members>portfolioAbout</members>
+        <members>portfolioBody</members>
+        <members>portfolioContactForm</members>
+        <members>portfolioContainer</members>
+        <members>portfolioEducation</members>
+        <members>portfolioEducationCard</members>
+        <members>portfolioExperience</members>
+        <members>portfolioExperienceCard</members>
+        <members>portfolioFooterAbout</members>
+        <members>portfolioFooterIcons</members>
+        <members>portfolioHeader</members>
+        <members>portfolioLayout</members>
+        <members>portfolioModal</members>
+        <members>portfolioSummary</members>
+        <name>LightningComponentBundle</name>
+    </types>
+    <version>58.0</version>
+</Package>
